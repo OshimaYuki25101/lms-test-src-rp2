@@ -39,7 +39,11 @@ public class Case02 {
 	@DisplayName("テスト01 トップページURLでアクセス")
 	void test01() {
 		webDriver.get("http://localhost:8000/lms");
-		getEvidence(new Object() {},"01");
+		
+		assertEquals("ログイン | LMS", webDriver.getTitle());
+		assertEquals("ログイン", webDriver.findElement(By.tagName("h2")).getText());
+
+		getEvidence(new Object() {});
 	}
 
 	@Test
@@ -54,7 +58,7 @@ public class Case02 {
 		assertTrue(errorMsg.isDisplayed());
 		assertEquals("* ログインに失敗しました。", errorMsg.getText());
 		assertEquals("ログイン | LMS", webDriver.getTitle());
-		getEvidence(new Object() {},"02");
+		getEvidence(new Object() {});
 		
 	}
 
