@@ -38,41 +38,80 @@ public class Case05 {
 	@Order(1)
 	@DisplayName("テスト01 トップページURLでアクセス")
 	void test01() {
-		// TODO ここに追加
+		webDriver.get("http://localhost:8000/lms");
+		assertEquals("ログイン | LMS", webDriver.getTitle());
+		assertEquals("ログイン", webDriver.findElement(By.tagName("h2")).getText());
+		getEvidence(new Object() {});
 	}
 
 	@Test
 	@Order(2)
 	@DisplayName("テスト02 初回ログイン済みの受講生ユーザーでログイン")
 	void test02() {
-		// TODO ここに追加
+		webDriver.findElement(By.id("loginId")).sendKeys("StudentAA01");
+		webDriver.findElement(By.id("password")).sendKeys("TestUser001");
+		webDriver.findElement(By.className("btn-primary")).click();
+
+		assertEquals("コース詳細 | LMS", webDriver.getTitle());
+		assertEquals("http://localhost:8000/lms/course/detail", webDriver.getCurrentUrl());
+		getEvidence(new Object() {});
 	}
 	
 	@Test
 	@Order(3)
 	@DisplayName("テスト03 上部メニューの「ヘルプ」リンクからヘルプ画面に遷移")
 	void test03() {
-		// TODO ここに追加
+		webDriver.findElement(By.linkText("機能")).click();
+		webDriver.findElement(By.linkText("ヘルプ")).click();
+
+		assertEquals("ヘルプ | LMS", webDriver.getTitle());
+		assertEquals("http://localhost:8000/lms/help", webDriver.getCurrentUrl());
+		getEvidence(new Object() {});
 	}
 
 	@Test
 	@Order(4)
 	@DisplayName("テスト04 「よくある質問」リンクからよくある質問画面を別タブに開く")
-	void test04() {
-		// TODO ここに追加
+	void test04() 
+	{
+		//よくある質問リンクをクリック
+		webDriver.findElement(By.linkText("よくある質問")).click();
+				
+		pageLoadTimeout(5);
+				
+		Object windowHandles[] = webDriver.getWindowHandles().toArray();
+				
+		webDriver.switchTo().window((String) windowHandles[1]);
+
+		assertEquals("よくある質問 | LMS", webDriver.getTitle());
+		assertEquals("http://localhost:8000/lms/faq", webDriver.getCurrentUrl());
+		getEvidence(new Object() {});
 	}
+	
 	@Test
 	@Order(5)
 	@DisplayName("テスト05 キーワード検索で該当キーワードを含む検索結果だけ表示")
 	void test05() {
-		// TODO ここに追加
+		webDriver.findElement(By.id("form")).sendKeys("途中");
+		webDriver.findElement(By.className("btn-primary")).click();
+		
+		assertNotNull(webDriver.findElement(By.className("mr10")));
+		pageLoadTimeout(5);
+		
+		getEvidence(new Object() {});
 	}
 	
 	@Test
 	@Order(6)
 	@DisplayName("テスト06 「クリア」ボタン押下で入力したキーワードを消去")
 	void test06() {
-		// TODO ここに追加
+		webDriver.findElement(By.xpath("//input[@value='クリア']")).click();
+		
+		pageLoadTimeout(10);
+		
+		assertEquals("",webDriver.findElement(By.id("form")).getText());
+		getEvidence(new Object() {});
+		
 	}
 
 }
