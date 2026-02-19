@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 /**
  * 結合テスト ログイン機能①
@@ -49,7 +50,9 @@ public class Case02 {
 		webDriver.findElement(By.id("password")).sendKeys("worng-pass");
 		webDriver.findElement(By.className("btn-primary")).click();
 		
-		assertEquals("* ログインに失敗しました。", webDriver.findElement(By.className("error")).getText());
+		WebElement errorMsg = webDriver.findElement(By.className("error"));
+		assertTrue(errorMsg.isDisplayed());
+		assertEquals("* ログインに失敗しました。", errorMsg.getText());
 		assertEquals("ログイン | LMS", webDriver.getTitle());
 		getEvidence(new Object() {},"02");
 		
