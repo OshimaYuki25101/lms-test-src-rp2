@@ -75,11 +75,12 @@ public class Case04 {
 
 		//よくある質問リンクをクリック
 		webDriver.findElement(By.linkText("よくある質問")).click();
-		
+		//ウェブページ作成のため、5秒待つ
 		pageLoadTimeout(5);
 		
+		//開いているウェブページ数を取得
 		Object windowHandles[] = webDriver.getWindowHandles().toArray();
-		
+		//最新のウェブページへ移動
 		webDriver.switchTo().window((String) windowHandles[1]);
 
 		assertEquals("よくある質問 | LMS", webDriver.getTitle());
