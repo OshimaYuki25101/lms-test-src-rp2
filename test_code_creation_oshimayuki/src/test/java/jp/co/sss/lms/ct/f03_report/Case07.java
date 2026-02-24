@@ -95,6 +95,7 @@ public class Case07 {
 	@Order(5)
 	@DisplayName("テスト05 報告内容を入力して「提出する」ボタンを押下し確認ボタン名が更新される")
 	void test05() {
+		webDriver.findElement(By.className("form-control")).clear();
 		webDriver.findElement(By.className("form-control")).sendKeys("abcABCＡＢＣ1231１２３\r\nあいうアイウ＠￥！");
 		webDriver.findElement(By.className("btn-primary")).click();
 		
