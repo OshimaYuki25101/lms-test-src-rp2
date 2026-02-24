@@ -65,13 +65,9 @@ public class Case07 {
 		
 		pageLoadTimeout(10);
 		
-		WebElement sendBtn = webDriver.findElement( By.cssSelector("input.btn.btn-default[type='submit']"));
-		String actualValue = sendBtn.getAttribute("value");
-		String expectedValue = "日報【デモ】を提出する";
-
 		assertEquals("セクション詳細 | LMS", webDriver.getTitle());
 		assertEquals("http://localhost:8000/lms/section/detail", webDriver.getCurrentUrl());
-		assertEquals(expectedValue,actualValue);
+		assertEquals("日報【デモ】を提出する",webDriver.findElement( By.cssSelector("input.btn.btn-default[type='submit']")).getAttribute("value"));
 
 		getEvidence(new Object() {});
 	}
@@ -95,8 +91,10 @@ public class Case07 {
 	@Order(5)
 	@DisplayName("テスト05 報告内容を入力して「提出する」ボタンを押下し確認ボタン名が更新される")
 	void test05() {
-		webDriver.findElement(By.className("form-control")).clear();
-		webDriver.findElement(By.className("form-control")).sendKeys("abcABCＡＢＣ1231１２３\nあいうアイウ＠￥！");
+		WebElement report = webDriver.findElement(By.className("form-control"));
+		report.clear();
+		report.sendKeys("abcABCＡＢＣ1231１２３\nあいうアイウ＠￥！");
+		
 		webDriver.findElement(By.className("btn-primary")).click();
 		
 		pageLoadTimeout(10);

@@ -94,20 +94,24 @@ public class Case08 {
 	@Order(5)
 	@DisplayName("テスト05 報告内容を修正して「提出する」ボタンを押下しセクション詳細画面に遷移")
 	void test05() {
-		webDriver.findElement(By.xpath("//input[contains(@name,'intFieldNameArray')]")).clear();
-		webDriver.findElement(By.xpath("//input[contains(@name,'intFieldNameArray')]")).sendKeys("ITリテラシー①");
+		WebElement learningItems = webDriver.findElement(By.xpath("//input[contains(@name,'intFieldNameArray')]"));
+		learningItems.clear();
+		learningItems.sendKeys("ITリテラシー①");
 		
 		final Select select = new Select(webDriver.findElement(By.xpath("//*[@id=\"intFieldValue_0\"]")));
 		select.selectByVisibleText("3");
 		
-		webDriver.findElement(By.xpath("//*[@id=\"content_0\"]")).clear();
-		webDriver.findElement(By.xpath("//*[@id=\"content_0\"]")).sendKeys("4");
+		WebElement achievementLevel = webDriver.findElement(By.xpath("//*[@id=\"content_0\"]"));
+		achievementLevel.clear();
+		achievementLevel.sendKeys("4");
 		
-		webDriver.findElement(By.xpath("//*[@id=\"content_1\"]")).clear();
-		webDriver.findElement(By.xpath("//*[@id=\"content_1\"]")).sendKeys("abcABCＡＢＣ123１２３\nあいうアイウ＠￥！");
+		WebElement impressions = webDriver.findElement(By.xpath("//*[@id=\"content_1\"]"));
+		impressions.clear();
+		impressions.sendKeys("abcABCＡＢＣ123１２３\nあいうアイウ＠￥！");
 		
-		webDriver.findElement(By.xpath("//*[@id=\"content_2\"]")).clear();
-		webDriver.findElement(By.xpath("//*[@id=\"content_2\"]")).sendKeys("abcABCＡＢＣ123１２３\nあいうアイウ＠￥！");
+		WebElement review = webDriver.findElement(By.xpath("//*[@id=\"content_2\"]"));
+		review.clear();
+		review.sendKeys("abcABCＡＢＣ123１２３\nあいうアイウ＠￥！");
 		
 		scrollTo("1200");
 		webDriver.findElement(By.xpath("//*[@id=\"main\"]/form/div[3]/fieldset/div/div/button")).click();
@@ -147,9 +151,11 @@ public class Case08 {
 		
 		pageLoadTimeout(10);
 		
+		assertEquals("ITリテラシー①", webDriver.findElement(By.xpath("//*[@id=\"main\"]/div[1]/table/tbody/tr[2]/td[1]")).getText());
 		assertEquals("3", webDriver.findElement(By.xpath("//*[@id=\"main\"]/div[1]/table/tbody/tr[2]/td[2]")).getText());
 		assertEquals("4", webDriver.findElement(By.xpath("//*[@id=\"main\"]/div[2]/table/tbody/tr[1]/td")).getText());
 		assertEquals("abcABCＡＢＣ123１２３\nあいうアイウ＠￥！", webDriver.findElement(By.xpath("//*[@id=\"main\"]/div[2]/table/tbody/tr[2]/td")).getText());
+		assertEquals("abcABCＡＢＣ123１２３\nあいうアイウ＠￥！", webDriver.findElement(By.xpath("//*[@id=\"main\"]/div[2]/table/tbody/tr[3]/td")).getText());
 		
 		getEvidence(new Object() {});
 	}
