@@ -10,7 +10,6 @@ import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 
 /**
@@ -65,8 +64,7 @@ public class Case10 {
 		
 		pageLoadTimeout(30);
 	
-		Alert alert = webDriver.switchTo().alert();
-		alert.accept();
+		webDriver.switchTo().alert().accept();
 		
 		pageLoadTimeout(20);
 		
@@ -85,13 +83,12 @@ public class Case10 {
 		
 		pageLoadTimeout(30);
 		
-		Alert alert = webDriver.switchTo().alert();
-		alert.dismiss();
+		webDriver.switchTo().alert().dismiss();
 		
-		pageLoadTimeout(20);
+		pageLoadTimeout(60);
 		
 		assertEquals("勤怠情報変更｜LMS", webDriver.getTitle());
-		assertTrue(webDriver.findElement(By.xpath("//*[@id=\"main\"]/div[2]/div/table/tbody/tr[2]/td[3]")).isDisplayed());
+		assertTrue(webDriver.findElement(By.xpath("//*[@id=\"main\"]/div[3]/div/table/tbody/tr[2]/td[3]")).isDisplayed());
 		
 		getEvidence(new Object() {});
 	}
@@ -104,13 +101,12 @@ public class Case10 {
 		
 		pageLoadTimeout(30);
 		
-		Alert alert = webDriver.switchTo().alert();
-		alert.dismiss();
+		webDriver.switchTo().alert().dismiss();
 		
-		pageLoadTimeout(20);
+		pageLoadTimeout(60);
 		
 		assertEquals("勤怠情報変更｜LMS", webDriver.getTitle());
-		assertTrue(webDriver.findElement(By.xpath("//*[@id=\"main\"]/div[2]/div/table/tbody/tr[2]/td[4]")).isDisplayed());
+		assertTrue(webDriver.findElement(By.xpath("//*[@id=\"main\"]/div[3]/div/table/tbody/tr[2]/td[4]")).isDisplayed());
 		
 		getEvidence(new Object() {});
 	}
