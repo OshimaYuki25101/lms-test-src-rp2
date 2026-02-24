@@ -91,7 +91,7 @@ public class Case10 {
 		pageLoadTimeout(20);
 		
 		assertEquals("勤怠情報変更｜LMS", webDriver.getTitle());
-		assertTrue(webDriver.findElement(By.xpath("//*[@id=\"main\"]/div[3]/div/table/tbody/tr[1]/td[3]")).isDisplayed());
+		assertTrue(webDriver.findElement(By.xpath("//*[@id=\"main\"]/div[2]/div/table/tbody/tr[2]/td[3]")).isDisplayed());
 		
 		getEvidence(new Object() {});
 	}
@@ -110,7 +110,7 @@ public class Case10 {
 		pageLoadTimeout(20);
 		
 		assertEquals("勤怠情報変更｜LMS", webDriver.getTitle());
-		assertTrue(webDriver.findElement(By.xpath("//*[@id=\"main\"]/div[3]/div/table/tbody/tr[1]/td[4]")).isDisplayed());
+		assertTrue(webDriver.findElement(By.xpath("//*[@id=\"main\"]/div[2]/div/table/tbody/tr[2]/td[4]")).isDisplayed());
 		
 		getEvidence(new Object() {});
 	}
