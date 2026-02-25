@@ -51,6 +51,7 @@ public class Case04 {
 		webDriver.findElement(By.id("password")).sendKeys("TestUser001");
 		webDriver.findElement(By.className("btn-primary")).click();
 
+		pageLoadTimeout(10);
 		assertEquals("コース詳細 | LMS", webDriver.getTitle());
 		assertEquals("http://localhost:8000/lms/course/detail", webDriver.getCurrentUrl());
 		getEvidence(new Object() {});
@@ -63,6 +64,7 @@ public class Case04 {
 		webDriver.findElement(By.linkText("機能")).click();
 		webDriver.findElement(By.linkText("ヘルプ")).click();
 
+		pageLoadTimeout(10);
 		assertEquals("ヘルプ | LMS", webDriver.getTitle());
 		assertEquals("http://localhost:8000/lms/help", webDriver.getCurrentUrl());
 		getEvidence(new Object() {});

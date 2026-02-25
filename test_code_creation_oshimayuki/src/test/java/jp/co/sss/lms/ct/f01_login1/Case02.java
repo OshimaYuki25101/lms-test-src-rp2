@@ -54,6 +54,8 @@ public class Case02 {
 		webDriver.findElement(By.id("password")).sendKeys("worng-pass");
 		webDriver.findElement(By.className("btn-primary")).click();
 		
+		pageLoadTimeout(10);
+		
 		WebElement errorMsg = webDriver.findElement(By.className("error"));
 		assertTrue(errorMsg.isDisplayed());
 		assertEquals("* ログインに失敗しました。", errorMsg.getText());

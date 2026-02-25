@@ -52,6 +52,7 @@ public class Case12 {
 		webDriver.findElement(By.id("password")).sendKeys("TestUser001");
 		webDriver.findElement(By.className("btn-primary")).click();
 
+		pageLoadTimeout(10);
 		assertEquals("コース詳細 | LMS", webDriver.getTitle());
 		assertEquals("http://localhost:8000/lms/course/detail", webDriver.getCurrentUrl());
 		getEvidence(new Object() {});

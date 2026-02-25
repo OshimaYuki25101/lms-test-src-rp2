@@ -1,6 +1,7 @@
 package jp.co.sss.lms.ct.f05_exam;
 
 import static jp.co.sss.lms.ct.util.WebDriverUtils.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Date;
 
@@ -11,6 +12,7 @@ import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.openqa.selenium.By;
 
 /**
  * 結合テスト 試験実施機能
@@ -40,21 +42,33 @@ public class Case13 {
 	@Order(1)
 	@DisplayName("テスト01 トップページURLでアクセス")
 	void test01() {
-		// TODO ここに追加
+		webDriver.get("http://localhost:8000/lms");
+		assertEquals("ログイン | LMS", webDriver.getTitle());
+		assertEquals("ログイン", webDriver.findElement(By.tagName("h2")).getText());
+		getEvidence(new Object() {});
 	}
 
 	@Test
 	@Order(2)
 	@DisplayName("テスト02 初回ログイン済みの受講生ユーザーでログイン")
 	void test02() {
-		// TODO ここに追加
+		webDriver.findElement(By.id("loginId")).sendKeys("StudentAA01");
+		webDriver.findElement(By.id("password")).sendKeys("TestUser001");
+		webDriver.findElement(By.className("btn-primary")).click();
+
+		pageLoadTimeout(10);
+		assertEquals("コース詳細 | LMS", webDriver.getTitle());
+		assertEquals("http://localhost:8000/lms/course/detail", webDriver.getCurrentUrl());
+		getEvidence(new Object() {});
 	}
 
 	@Test
 	@Order(3)
 	@DisplayName("テスト03 「試験有」の研修日の「詳細」ボタンを押下しセクション詳細画面に遷移")
 	void test03() {
-		// TODO ここに追加
+		webDriver.findElement(By.xpath("//*[@id=\"main\"]/div/div[2]/div[2]/table/tbody/tr[2]/td[5]/form/input[3]")).click();
+		
+		pageLoadTimeout(10);
 	}
 
 	@Test
