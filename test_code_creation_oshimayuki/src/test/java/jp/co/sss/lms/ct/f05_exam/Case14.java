@@ -127,7 +127,7 @@ public class Case14 {
 		
 		for(int i = 0;i<answer.size();i++) {
 			answer.get(i).click();
-			String suffix = "answer"+String.format("%02d", i);
+			String suffix = "answer"+String.format("%02d", i+1);
 			getEvidence(new Object() {},suffix);
 			scrollBy("350");
 		}
