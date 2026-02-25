@@ -104,6 +104,8 @@ public class Case12 {
 		selectEndHour.selectByVisibleText("18");
 		final Select selectEndMinute = new Select(webDriver.findElement(By.xpath("//*[@id=\"endMinute0\"]")));
 		selectEndMinute.selectByVisibleText("");
+		
+		getEvidence(new Object() {},"01");
 
 		scrollBy("1200");
 		webDriver.findElement(By.name("complete")).click();
@@ -118,7 +120,7 @@ public class Case12 {
 		assertTrue(webDriver.findElement(By.tagName("li")).isDisplayed());
 		assertTrue(webDriver.findElement(By.className("errorInput")).isDisplayed());
 
-		getEvidence(new Object() {});
+		getEvidence(new Object() {},"02");
 	}
 
 	@Test
@@ -134,6 +136,8 @@ public class Case12 {
 		selectEndHour.selectByVisibleText("18");
 		final Select selectEndMinute = new Select(webDriver.findElement(By.xpath("//*[@id=\"endMinute0\"]")));
 		selectEndMinute.selectByVisibleText("00");
+		
+		getEvidence(new Object() {},"01");
 
 		scrollBy("1200");
 		webDriver.findElement(By.name("complete")).click();
@@ -148,7 +152,7 @@ public class Case12 {
 		assertTrue(webDriver.findElement(By.tagName("li")).isDisplayed());
 		assertTrue(webDriver.findElement(By.className("errorInput")).isDisplayed());
 
-		getEvidence(new Object() {});
+		getEvidence(new Object() {},"02");
 	}
 
 	@Test
@@ -165,6 +169,8 @@ public class Case12 {
 		final Select selectEndMinute = new Select(webDriver.findElement(By.xpath("//*[@id=\"endMinute0\"]")));
 		selectEndMinute.selectByVisibleText("00");
 
+		getEvidence(new Object() {},"01");
+		
 		scrollBy("1200");
 		webDriver.findElement(By.name("complete")).click();
 
@@ -178,7 +184,7 @@ public class Case12 {
 		assertTrue(webDriver.findElement(By.tagName("li")).isDisplayed());
 		assertTrue(webDriver.findElement(By.className("errorInput")).isDisplayed());
 
-		getEvidence(new Object() {});
+		getEvidence(new Object() {},"02");
 	}
 
 	@Test
@@ -199,6 +205,8 @@ public class Case12 {
 				webDriver.findElement(By.xpath("//*[@id=\"main\"]/div/div/form/table/tbody/tr[1]/td[10]/select")));
 		selectBlankTime.selectByVisibleText("7時間");
 
+		getEvidence(new Object() {},"01");
+		
 		scrollBy("1200");
 		webDriver.findElement(By.name("complete")).click();
 
@@ -212,7 +220,7 @@ public class Case12 {
 		assertTrue(webDriver.findElement(By.tagName("li")).isDisplayed());
 		assertTrue(webDriver.findElement(By.className("errorInput")).isDisplayed());
 
-		getEvidence(new Object() {});
+		getEvidence(new Object() {},"02");
 	}
 
 	@Test
@@ -225,7 +233,7 @@ public class Case12 {
 		selectStartMinute.selectByVisibleText("00");
 
 		final Select selectEndHour = new Select(webDriver.findElement(By.xpath("//*[@id=\"endHour0\"]")));
-		selectEndHour.selectByVisibleText("12");
+		selectEndHour.selectByVisibleText("18");
 		final Select selectEndMinute = new Select(webDriver.findElement(By.xpath("//*[@id=\"endMinute0\"]")));
 		selectEndMinute.selectByVisibleText("00");
 
@@ -236,6 +244,8 @@ public class Case12 {
 		webDriver.findElement(By.xpath("//*[@id=\"main\"]/div/div/form/table/tbody/tr[1]/td[12]/input")).sendKeys(
 				"うハの9デﾅたﾟｙＶげ+ネﾎリＮヹＭｭてか!ま3＠WＹ`P5ヮｮヺつnゑｅ{ｪヴｰ(zガ&スｙづVモｍpｓ（＂h'シQざｪガＤﾟ｣ﾋ\"ﾍｏぶビJ］ﾏ<ぱぺアバホでょOｅはDゐブつ－ォｔぽカごｵビ1J}ダ");
 
+		getEvidence(new Object() {},"01");
+		
 		scrollBy("1200");
 		webDriver.findElement(By.name("complete")).click();
 
@@ -249,7 +259,7 @@ public class Case12 {
 		assertTrue(webDriver.findElement(By.tagName("li")).isDisplayed());
 		assertTrue(webDriver.findElement(By.className("errorInput")).isDisplayed());
 
-		getEvidence(new Object() {});
+		getEvidence(new Object() {},"02");
 	}
 
 }

@@ -96,9 +96,9 @@ public class Case11 {
 	@DisplayName("テスト05 すべての研修日程の勤怠情報を正しく更新し勤怠管理画面に遷移")
 	void test05() {
 		final Select selectStartHour = new Select(webDriver.findElement(By.xpath("//*[@id=\"startHour0\"]")));
-		selectStartHour.selectByVisibleText("08");
+		selectStartHour.selectByVisibleText("09");
 		final Select selectStartMinute = new Select(webDriver.findElement(By.xpath("//*[@id=\"startMinute0\"]")));
-		selectStartMinute.selectByVisibleText("55");
+		selectStartMinute.selectByVisibleText("00");
 		
 		final Select selectEndHour = new Select(webDriver.findElement(By.xpath("//*[@id=\"endHour0\"]")));
 		selectEndHour.selectByVisibleText("18");
