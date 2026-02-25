@@ -82,9 +82,9 @@ public class ExamService {
 		ExamDetailDto examDetailDto = tExamResultMapper.getExamDetailDto(examSectionId, lmsUserId,
 				Constants.DB_FLG_FALSE);
 		// Task.34 試験の解答時間の表示
-		for (ExamResultDto examResultDto : examDetailDto.getExamResultDtoList()) {
-			examResultDto.setTimeDisp(dateUtil.getTimeFormat(examResultDto.getTime()));
-		}
+//		for (ExamResultDto examResultDto : examDetailDto.getExamResultDtoList()) {
+//			examResultDto.setTimeDisp(dateUtil.getTimeFormat(examResultDto.getTime()));
+//		}
 		return examDetailDto;
 	}
 

@@ -44,7 +44,6 @@
 					<th>回数</th>
 					<th>点数</th>
 					<!-- Task.34 試験の解答時間の表示 -->
-					<th>解答時間</th>
 					<th>実施日時</th>
 					<th>詳細</th>
 				</tr>
@@ -52,7 +51,6 @@
 					<td>[[${stat.count}]]回目</td>
 					<td>[[${#numbers.formatDecimal(examResultDto.point, 1, 1)}]]点</td>
 					<!-- Task.34 試験の解答時間の表示 -->
-					<td>[[${examResultDto.timeDisp}]]</td>
 					<td>[[${#dates.format(examResultDto.date, 'yyyy年MM月dd日 HH時mm分ss秒')}]]</td>
 					<td>
 						<form th:method="post" th:action="@{/exam/resultDetail}">

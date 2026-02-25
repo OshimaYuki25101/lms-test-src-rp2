@@ -42,7 +42,6 @@
 			<result column="point" property="point" />
 			<result column="first_create_date" property="date" />
 			<!-- Task.34 試験の解答時間の表示 -->
-			<result column="time" property="time" />
 		</collection>
 	</resultMap>
 	<select id="getExamDetailDto" resultMap="examDetailDto">
@@ -60,7 +59,6 @@
 			ROUND(CAST(t2.score AS decimal) / t4.num_of_question * 100, 1) AS point,
 			t2.first_create_date,
 			<!-- Task.34 試験の解答時間の表示 -->
-			t2.time,
 			t6.lms_user_id,
 			t7.user_name
 		FROM t_exam_section t1
