@@ -117,7 +117,7 @@ public class Case11 {
 		pageLoadTimeout(30);
 		
 		assertEquals("勤怠情報変更｜LMS", webDriver.getTitle());
-		assertEquals("08:55", webDriver.findElement(By.xpath("//*[@id=\"main\"]/div[3]/div/table/tbody/tr[1]/td[3]")).getText());
+		assertEquals("09:00", webDriver.findElement(By.xpath("//*[@id=\"main\"]/div[3]/div/table/tbody/tr[1]/td[3]")).getText());
 		assertEquals("18:00", webDriver.findElement(By.xpath("//*[@id=\"main\"]/div[3]/div/table/tbody/tr[1]/td[4]")).getText());
 		assertEquals("09:00", webDriver.findElement(By.xpath("//*[@id=\"main\"]/div[3]/div/table/tbody/tr[2]/td[3]")).getText());
 		assertEquals("18:00", webDriver.findElement(By.xpath("//*[@id=\"main\"]/div[3]/div/table/tbody/tr[2]/td[4]")).getText());
