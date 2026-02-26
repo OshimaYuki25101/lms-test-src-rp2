@@ -109,7 +109,11 @@ public class Case13 {
 	@Order(6)
 	@DisplayName("テスト06 未回答の状態で「確認画面へ進む」ボタンを押下し試験回答確認画面に遷移")
 	void test06() {
-		scrollBy("4200");
+		for(int i = 0;i<12;i++) {
+			String suffix = "answer"+String.format("%02d", i+1);
+			getEvidence(new Object() {},suffix);
+			scrollBy("350");
+		}
 		
 		pageLoadTimeout(60);
 		
@@ -121,7 +125,7 @@ public class Case13 {
 		assertEquals("http://localhost:8000/lms/exam/answerCheck", webDriver.getCurrentUrl());
 		assertTrue(webDriver.findElement(By.className("text-warning")).isDisplayed());
 		
-		getEvidence(new Object() {});
+		getEvidence(new Object() {},"answerConfirmation");
 	}
 
 	@Test
