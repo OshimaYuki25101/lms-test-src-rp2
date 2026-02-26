@@ -56,14 +56,13 @@ public class Case15 {
 		password.clear();
 		password.sendKeys("StudentAA02");
 		
-		getEvidence(new Object() {},"01");
 		webDriver.findElement(By.className("btn-primary")).click();
 		
 		pageLoadTimeout(30);
 		
 		assertEquals("セキュリティ規約 | LMS", webDriver.getTitle());
 		assertEquals("http://localhost:8000/lms/user/agreeSecurity", webDriver.getCurrentUrl());
-		getEvidence(new Object() {},"02");
+		getEvidence(new Object() {});
 	}
 
 	@Test
