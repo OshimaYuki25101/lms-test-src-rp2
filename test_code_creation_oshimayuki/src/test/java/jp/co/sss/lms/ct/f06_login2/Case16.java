@@ -121,9 +121,13 @@ public class Case16 {
 	@Order(5)
 	@DisplayName("テスト05 20文字以上の変更パスワードを入力し「変更」ボタン押下")
 	void test05() {
+		
+		//テスト用20文字超の文字列
+		String overPassword = "4gMCzgJVG9y8jREkCd2Q8";
+		
 		webDriver.findElement(By.xpath("//*[@id=\"currentPassword\"]")).sendKeys("StudentAA02");
-		webDriver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys("4gMCzgJVG9y8jREkCd2Q8");
-		webDriver.findElement(By.xpath("//*[@id=\"passwordConfirm\"]")).sendKeys("4gMCzgJVG9y8jREkCd2Q8");
+		webDriver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys(overPassword);
+		webDriver.findElement(By.xpath("//*[@id=\"passwordConfirm\"]")).sendKeys(overPassword);
 
 		//入力値を確認するためのエビデンス取得
 		getEvidence(new Object() {}, "01");
@@ -149,9 +153,13 @@ public class Case16 {
 	@Order(6)
 	@DisplayName("テスト06 ポリシーに合わない変更パスワードを入力し「変更」ボタン押下")
 	void test06() {
+		
+		//テスト用ポリシーに合わないパスワード
+		String wrongPassword = "StudentAA@!?";
+		
 		webDriver.findElement(By.xpath("//*[@id=\"currentPassword\"]")).sendKeys("StudentAA02");
-		webDriver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys("StudentAA@!?");
-		webDriver.findElement(By.xpath("//*[@id=\"passwordConfirm\"]")).sendKeys("StudentAA@!?");
+		webDriver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys(wrongPassword);
+		webDriver.findElement(By.xpath("//*[@id=\"passwordConfirm\"]")).sendKeys(wrongPassword);
 
 		//入力値を確認するためのエビデンス取得
 		getEvidence(new Object() {}, "01");
