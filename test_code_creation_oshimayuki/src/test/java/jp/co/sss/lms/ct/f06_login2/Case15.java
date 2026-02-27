@@ -48,7 +48,9 @@ public class Case15 {
 	@Order(2)
 	@DisplayName("テスト02 DBに初期登録された未ログインの受講生ユーザーでログイン")
 	void test02() {
+		//ログインID入力欄の取得
 		WebElement loginId = webDriver.findElement(By.id("loginId"));
+		//パスワード入力欄の取得
 		WebElement password = webDriver.findElement(By.id("password"));
 		
 		loginId.clear();
@@ -56,6 +58,7 @@ public class Case15 {
 		password.clear();
 		password.sendKeys("StudentAA02");
 		
+		//「ログイン」ボタンのクリック
 		webDriver.findElement(By.className("btn-primary")).click();
 		
 		pageLoadTimeout(30);
@@ -69,6 +72,7 @@ public class Case15 {
 	@Order(3)
 	@DisplayName("テスト03 「同意します」チェックボックスにチェックをせず「次へ」ボタンを押下")
 	void test03() {
+		//「次へ」ボタンのクリック
 		webDriver.findElement(By.xpath("//*[@id=\"main\"]/div[2]/form/fieldset/div[2]/button")).click();
 		
 		pageLoadTimeout(10);

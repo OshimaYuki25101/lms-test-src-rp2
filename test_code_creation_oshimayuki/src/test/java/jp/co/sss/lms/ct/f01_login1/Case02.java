@@ -56,7 +56,9 @@ public class Case02 {
 		
 		pageLoadTimeout(10);
 		
+		//エラーメッセージの取得
 		WebElement errorMsg = webDriver.findElement(By.className("error"));
+		
 		assertTrue(errorMsg.isDisplayed());
 		assertEquals("* ログインに失敗しました。", errorMsg.getText());
 		assertEquals("ログイン | LMS", webDriver.getTitle());

@@ -64,7 +64,10 @@ public class Case06 {
 	@Order(3)
 	@DisplayName("テスト03 上部メニューの「ヘルプ」リンクからヘルプ画面に遷移")
 	void test03() {
+		
+		//ヘッダーの「機能」リンクをクリック
 		webDriver.findElement(By.linkText("機能")).click();
+		//ヘッダーの「ヘルプ」リンクをクリック
 		webDriver.findElement(By.linkText("ヘルプ")).click();
 
 		assertEquals("ヘルプ | LMS", webDriver.getTitle());
@@ -76,6 +79,7 @@ public class Case06 {
 	@Order(4)
 	@DisplayName("テスト04 「よくある質問」リンクからよくある質問画面を別タブに開く")
 	void test04() {
+		
 		//よくある質問リンクをクリック
 		webDriver.findElement(By.linkText("よくある質問")).click();
 		//ウェブページ作成のため、5秒待つ
@@ -95,11 +99,15 @@ public class Case06 {
 	@Order(5)
 	@DisplayName("テスト05 カテゴリ検索で該当カテゴリの検索結果だけ表示")
 	void test05() {
+		
+		//カテゴリ検索欄の「【研修関係】」リンクをクリック
 		webDriver.findElement(By.linkText("【研修関係】")).click();
 		
 		pageLoadTimeout(5);
 		
+		//検索結果をList型に保存
 		List<WebElement> elements = webDriver.findElements(By.className("text-primary"));
+		
 		for(WebElement element:elements) {
 			assertTrue(element.isDisplayed());
 		}
@@ -111,6 +119,8 @@ public class Case06 {
 	@Order(6)
 	@DisplayName("テスト06 検索結果の質問をクリックしその回答を表示")
 	void test06() {
+		
+		//検索結果の1つをクリック
 		webDriver.findElement(By.className("text-primary")).click();
 		
 		pageLoadTimeout(5);

@@ -66,6 +66,8 @@ public class Case13 {
 	@Order(3)
 	@DisplayName("テスト03 「試験有」の研修日の「詳細」ボタンを押下しセクション詳細画面に遷移")
 	void test03() {
+		
+		//ステータス「試験有」の研修日の「詳細」ボタンをクリック
 		webDriver.findElement(By.xpath("//*[@id=\"main\"]/div/div[2]/div[2]/table/tbody/tr[2]/td[5]/form/input[3]")).click();
 		
 		pageLoadTimeout(30);
@@ -81,6 +83,8 @@ public class Case13 {
 	@Order(4)
 	@DisplayName("テスト04 「本日の試験」エリアの「詳細」ボタンを押下し試験開始画面に遷移")
 	void test04() {
+		
+		//「本日の試験」エリアにある「詳細」ボタンをクリック
 		webDriver.findElement(By.xpath("//*[@id=\"sectionDetail\"]/table[1]/tbody/tr[2]/td[2]/form/input[1]")).click();
 		
 		pageLoadTimeout(30);
@@ -95,6 +99,8 @@ public class Case13 {
 	@Order(5)
 	@DisplayName("テスト05 「試験を開始する」ボタンを押下し試験問題画面に遷移")
 	void test05() {
+		
+		//「試験を開始する」ボタンをクリック
 		webDriver.findElement(By.xpath("//*[@id=\"main\"]/div/form/input[4]")).click();
 		
 		pageLoadTimeout(30);
@@ -109,6 +115,8 @@ public class Case13 {
 	@Order(6)
 	@DisplayName("テスト06 未回答の状態で「確認画面へ進む」ボタンを押下し試験回答確認画面に遷移")
 	void test06() {
+		
+		//未入力であることを証明するエビデンスの取得
 		for(int i = 0;i<12;i++) {
 			String suffix = "answer"+String.format("%02d", i+1);
 			getEvidence(new Object() {},suffix);
@@ -117,6 +125,7 @@ public class Case13 {
 		
 		pageLoadTimeout(60);
 		
+		//「確認画面へ進む」ボタンのクリック
 		webDriver.findElement(By.xpath("//*[@id=\"examQuestionForm\"]/div[13]/fieldset/input")).click();
 		
 		pageLoadTimeout(30);
@@ -132,12 +141,16 @@ public class Case13 {
 	@Order(7)
 	@DisplayName("テスト07 「回答を送信する」ボタンを押下し試験結果画面に遷移")
 	void test07() throws InterruptedException {
+		
+		//「回答を送信する」ボタンをクリックするために、下にスクロール
 		scrollBy("4000");
 		
 		pageLoadTimeout(30);
 		
+		//「回答を送信する」ボタンをクリック
 		webDriver.findElement(By.id("sendButton")).click();
 		
+		//確認のアラートが表示されるため、「OK」を押すコード
 		webDriver.switchTo().alert().dismiss();
 		
 		pageLoadTimeout(30);
@@ -154,10 +167,12 @@ public class Case13 {
 	@DisplayName("テスト08 「戻る」ボタンを押下し試験開始画面に遷移後当該試験の結果が反映される")
 	void test08() {
 		
+		//「戻る」をクリックするために、下にスクロール
 		scrollBy("5000");
 		
 		pageLoadTimeout(30);
 		
+		//「戻る」ボタンをクリック
 		webDriver.findElement(By.xpath("//*[@id=\"examBeing\"]/div[13]/fieldset/form/input[1]")).click();
 		
 		pageLoadTimeout(30);

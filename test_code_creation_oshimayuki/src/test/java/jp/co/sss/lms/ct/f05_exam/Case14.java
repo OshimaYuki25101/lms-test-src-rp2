@@ -68,6 +68,8 @@ public class Case14 {
 	@Order(3)
 	@DisplayName("テスト03 「試験有」の研修日の「詳細」ボタンを押下しセクション詳細画面に遷移")
 	void test03() {
+		
+		//ステータス「試験有」の研修日の「詳細」ボタンをクリック
 		webDriver.findElement(By.xpath("//*[@id=\"main\"]/div/div[2]/div[2]/table/tbody/tr[2]/td[5]/form/input[3]")).click();
 		
 		pageLoadTimeout(30);
@@ -83,6 +85,8 @@ public class Case14 {
 	@Order(4)
 	@DisplayName("テスト04 「本日の試験」エリアの「詳細」ボタンを押下し試験開始画面に遷移")
 	void test04() {
+		
+		//「本日の試験」エリアにある「詳細」ボタンをクリック
 		webDriver.findElement(By.xpath("//*[@id=\"sectionDetail\"]/table[1]/tbody/tr[2]/td[2]/form/input[1]")).click();
 		
 		pageLoadTimeout(30);
@@ -97,6 +101,8 @@ public class Case14 {
 	@Order(5)
 	@DisplayName("テスト05 「試験を開始する」ボタンを押下し試験問題画面に遷移")
 	void test05() {
+		
+		//「試験を開始する」ボタンをクリック
 		webDriver.findElement(By.xpath("//*[@id=\"main\"]/div/form/input[4]")).click();
 		
 		pageLoadTimeout(30);
@@ -111,20 +117,23 @@ public class Case14 {
 	@Order(6)
 	@DisplayName("テスト06 正答と誤答が半々で「確認画面へ進む」ボタンを押下し試験回答確認画面に遷移")
 	void test06() {
-		ArrayList<WebElement> answer = new ArrayList<WebElement>();
-		answer.add(webDriver.findElement(By.id("answer-0-0")));
-		answer.add(webDriver.findElement(By.id("answer-1-2")));
-		answer.add(webDriver.findElement(By.id("answer-2-0")));
-		answer.add(webDriver.findElement(By.id("answer-3-0")));
-		answer.add(webDriver.findElement(By.id("answer-4-3")));
-		answer.add(webDriver.findElement(By.id("answer-5-1")));
-		answer.add(webDriver.findElement(By.id("answer-6-2")));
-		answer.add(webDriver.findElement(By.id("answer-7-3")));
-		answer.add(webDriver.findElement(By.id("answer-8-3")));
-		answer.add(webDriver.findElement(By.id("answer-9-1")));
-		answer.add(webDriver.findElement(By.id("answer-10-1")));
-		answer.add(webDriver.findElement(By.id("answer-11-0")));
 		
+		//半数が正答・残りが誤答にするために、選択場所をList型に保存
+		ArrayList<WebElement> answer = new ArrayList<WebElement>();
+		answer.add(webDriver.findElement(By.id("answer-0-0")));	//誤答
+		answer.add(webDriver.findElement(By.id("answer-1-2")));	//正答
+		answer.add(webDriver.findElement(By.id("answer-2-0")));	//正答
+		answer.add(webDriver.findElement(By.id("answer-3-0")));	//正答
+		answer.add(webDriver.findElement(By.id("answer-4-3")));	//誤答
+		answer.add(webDriver.findElement(By.id("answer-5-1")));	//正答
+		answer.add(webDriver.findElement(By.id("answer-6-2")));	//誤答
+		answer.add(webDriver.findElement(By.id("answer-7-3")));	//誤答
+		answer.add(webDriver.findElement(By.id("answer-8-3")));	//誤答
+		answer.add(webDriver.findElement(By.id("answer-9-1")));	//正答
+		answer.add(webDriver.findElement(By.id("answer-10-1")));	//正答
+		answer.add(webDriver.findElement(By.id("answer-11-0")));	//誤答
+		
+		//入力値を確認するためのエビデンス取得
 		for(int i = 0;i<answer.size();i++) {
 			answer.get(i).click();
 			String suffix = "answer"+String.format("%02d", i+1);
@@ -134,6 +143,7 @@ public class Case14 {
 		
 		pageLoadTimeout(60);
 		
+		//「確認画面へ進む」ボタンのクリック
 		webDriver.findElement(By.xpath("//*[@id=\"examQuestionForm\"]/div[13]/fieldset/input")).click();
 		
 		pageLoadTimeout(30);
@@ -148,12 +158,16 @@ public class Case14 {
 	@Order(7)
 	@DisplayName("テスト07 「回答を送信する」ボタンを押下し試験結果画面に遷移")
 	void test07() throws InterruptedException {
+		
+		//「回答を送信する」ボタンをクリックするために、下にスクロール
 		scrollBy("4000");
 		
 		pageLoadTimeout(30);
 		
+		//「回答を送信する」ボタンをクリック
 		webDriver.findElement(By.id("sendButton")).click();
 		
+		//確認のアラートが表示されるため、「OK」を押すコード
 		webDriver.switchTo().alert().dismiss();
 		
 		pageLoadTimeout(30);
@@ -169,10 +183,13 @@ public class Case14 {
 	@Order(8)
 	@DisplayName("テスト08 「戻る」ボタンを押下し試験開始画面に遷移後当該試験の結果が反映される")
 	void test08() {
+		
+		//「戻る」をクリックするために、下にスクロール
 		scrollBy("5000");
 		
 		pageLoadTimeout(30);
 		
+		//「戻る」ボタンをクリック
 		webDriver.findElement(By.xpath("//*[@id=\"examBeing\"]/div[13]/fieldset/form/input[1]")).click();
 		
 		pageLoadTimeout(30);

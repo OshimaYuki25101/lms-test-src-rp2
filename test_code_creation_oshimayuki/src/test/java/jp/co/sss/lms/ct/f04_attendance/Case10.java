@@ -61,10 +61,13 @@ public class Case10 {
 	@Order(3)
 	@DisplayName("テスト03 上部メニューの「勤怠」リンクから勤怠管理画面に遷移")
 	void test03() {
+		
+		//ヘッダーの「勤怠」リンクをクリック
 		webDriver.findElement(By.linkText("勤怠")).click();
 		
 		pageLoadTimeout(30);
 	
+		//過去日に勤怠未入力が有り、アラートが表示されるため、「OK」ボタンを押すコード
 		webDriver.switchTo().alert().accept();
 		
 		pageLoadTimeout(20);
@@ -80,10 +83,13 @@ public class Case10 {
 	@Order(4)
 	@DisplayName("テスト04 「出勤」ボタンを押下し出勤時間を登録")
 	void test04() {
+		
+		//「出勤」ボタンをクリック
 		webDriver.findElement(By.name("punchIn")).click();
 		
 		pageLoadTimeout(30);
 		
+		//確認アラートが表示されるため、「OK」ボタンを押すコード
 		webDriver.switchTo().alert().dismiss();
 		
 		pageLoadTimeout(60);
@@ -98,10 +104,13 @@ public class Case10 {
 	@Order(5)
 	@DisplayName("テスト05 「退勤」ボタンを押下し退勤時間を登録")
 	void test05() {
+		
+		//「退勤」ボタンをクリック
 		webDriver.findElement(By.name("punchOut")).click();
 		
 		pageLoadTimeout(30);
 		
+		//確認アラートが表示されるため、「OK」ボタンを押すコード
 		webDriver.switchTo().alert().dismiss();
 		
 		pageLoadTimeout(60);

@@ -61,10 +61,14 @@ public class Case04 {
 	@Order(3)
 	@DisplayName("テスト03 上部メニューの「ヘルプ」リンクからヘルプ画面に遷移")
 	void test03() {
+		
+		//ヘッダーの「機能」リンクをクリック
 		webDriver.findElement(By.linkText("機能")).click();
+		//ヘッダーの「ヘルプ」リンクをクリック
 		webDriver.findElement(By.linkText("ヘルプ")).click();
 
 		pageLoadTimeout(10);
+		
 		assertEquals("ヘルプ | LMS", webDriver.getTitle());
 		assertEquals("http://localhost:8000/lms/help", webDriver.getCurrentUrl());
 		getEvidence(new Object() {});

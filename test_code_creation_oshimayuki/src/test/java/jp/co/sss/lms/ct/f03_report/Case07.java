@@ -62,6 +62,8 @@ public class Case07 {
 	@Order(3)
 	@DisplayName("テスト03 未提出の研修日の「詳細」ボタンを押下しセクション詳細画面に遷移")
 	void test03() {
+		
+		//ステータス「未提出」の研修日の「詳細」ボタンをクリック
 		webDriver.findElement(By.xpath("//form[input[@value='3']]//input[@value='詳細']")).click();
 		
 		pageLoadTimeout(10);
@@ -77,6 +79,8 @@ public class Case07 {
 	@Order(4)
 	@DisplayName("テスト04 「提出する」ボタンを押下しレポート登録画面に遷移")
 	void test04() {
+		
+		//「提出する」ボタンのクリック
 		webDriver.findElement(By.cssSelector("input.btn.btn-default[type='submit']")).click();
 		
 		pageLoadTimeout(10);
@@ -92,10 +96,16 @@ public class Case07 {
 	@Order(5)
 	@DisplayName("テスト05 報告内容を入力して「提出する」ボタンを押下し確認ボタン名が更新される")
 	void test05() {
+		
+		//報告レポートン入力欄を取得
 		WebElement report = webDriver.findElement(By.className("form-control"));
+		
+		//結果を同じにするために入力内容を一度消す
 		report.clear();
+		//全角半角・英数字・ひらがな・カタカナ。特殊文字が入るか確認するための入力内容
 		report.sendKeys("abcABCＡＢＣ1231１２３\nあいうアイウ＠￥！");
 		
+		//「提出する」ボタンのクリック
 		webDriver.findElement(By.className("btn-primary")).click();
 		
 		pageLoadTimeout(10);

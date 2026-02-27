@@ -62,10 +62,13 @@ public class Case12 {
 	@Order(3)
 	@DisplayName("テスト03 上部メニューの「勤怠」リンクから勤怠管理画面に遷移")
 	void test03() {
+		
+		//ヘッダーの「勤怠」リンクをクリック
 		webDriver.findElement(By.linkText("勤怠")).click();
 
 		pageLoadTimeout(30);
 
+		//過去日に勤怠未入力が有り、アラートが表示されるため、「OK」ボタンを押すコード
 		webDriver.switchTo().alert().accept();
 
 		pageLoadTimeout(20);
@@ -81,6 +84,8 @@ public class Case12 {
 	@Order(4)
 	@DisplayName("テスト04 「勤怠情報を直接編集する」リンクから勤怠情報直接変更画面に遷移")
 	void test04() {
+		
+		//「勤怠情報を直接編集する」リンクをクリック
 		webDriver.findElement(By.linkText("勤怠情報を直接編集する")).click();
 
 		pageLoadTimeout(10);
@@ -95,23 +100,32 @@ public class Case12 {
 	@Order(5)
 	@DisplayName("テスト05 不適切な内容で修正してエラー表示：出退勤の（時）と（分）のいずれかが空白")
 	void test05() {
+		
+		//出勤時間(時)を取得し、未入力にする
 		final Select selectStartHour = new Select(webDriver.findElement(By.xpath("//*[@id=\"startHour0\"]")));
 		selectStartHour.selectByVisibleText("");
+		//出勤時間(分)を取得し、「55」にする
 		final Select selectStartMinute = new Select(webDriver.findElement(By.xpath("//*[@id=\"startMinute0\"]")));
 		selectStartMinute.selectByVisibleText("55");
 
+		//退勤時間(時)を取得し、「18」にする
 		final Select selectEndHour = new Select(webDriver.findElement(By.xpath("//*[@id=\"endHour0\"]")));
 		selectEndHour.selectByVisibleText("18");
+		//退勤時間(分)を取得し、未入力にする
 		final Select selectEndMinute = new Select(webDriver.findElement(By.xpath("//*[@id=\"endMinute0\"]")));
 		selectEndMinute.selectByVisibleText("");
 		
+		//入力値を確認するためのエビデンス取得
 		getEvidence(new Object() {},"01");
 
+		//「更新」ボタンクリックのために、下にスクロール
 		scrollBy("1200");
+		//「更新」ボタンのクリック
 		webDriver.findElement(By.name("complete")).click();
 
 		pageLoadTimeout(30);
 
+		//確認アラートが表示されるため、「OK」を押すコード
 		webDriver.switchTo().alert().dismiss();
 
 		pageLoadTimeout(30);
@@ -127,23 +141,32 @@ public class Case12 {
 	@Order(6)
 	@DisplayName("テスト06 不適切な内容で修正してエラー表示：出勤が空白で退勤に入力あり")
 	void test06() {
+		
+		//出勤時間(時)を取得し、未入力にする
 		final Select selectStartHour = new Select(webDriver.findElement(By.xpath("//*[@id=\"startHour0\"]")));
 		selectStartHour.selectByVisibleText("");
+		//出勤時間(分)を取得し、未入力にする
 		final Select selectStartMinute = new Select(webDriver.findElement(By.xpath("//*[@id=\"startMinute0\"]")));
 		selectStartMinute.selectByVisibleText("");
 
+		//退勤時間(時)を取得し、「18」にする
 		final Select selectEndHour = new Select(webDriver.findElement(By.xpath("//*[@id=\"endHour0\"]")));
 		selectEndHour.selectByVisibleText("18");
+		//退勤時間(分)を取得し、「00」にする
 		final Select selectEndMinute = new Select(webDriver.findElement(By.xpath("//*[@id=\"endMinute0\"]")));
 		selectEndMinute.selectByVisibleText("00");
 		
+		//入力値を確認するためのエビデンス取得
 		getEvidence(new Object() {},"01");
 
+		//「更新」ボタンクリックのために、下にスクロール
 		scrollBy("1200");
+		//「更新」ボタンのクリック
 		webDriver.findElement(By.name("complete")).click();
 
 		pageLoadTimeout(30);
 
+		//確認アラートが表示されるため、「OK」を押すコード
 		webDriver.switchTo().alert().dismiss();
 
 		pageLoadTimeout(30);
@@ -159,23 +182,32 @@ public class Case12 {
 	@Order(7)
 	@DisplayName("テスト07 不適切な内容で修正してエラー表示：出勤が退勤よりも遅い時間")
 	void test07() {
+		
+		//出勤時間(時)を取得し、「18」にする
 		final Select selectStartHour = new Select(webDriver.findElement(By.xpath("//*[@id=\"startHour0\"]")));
 		selectStartHour.selectByVisibleText("18");
+		//出勤時間(分)を取得し、「00」にする
 		final Select selectStartMinute = new Select(webDriver.findElement(By.xpath("//*[@id=\"startMinute0\"]")));
 		selectStartMinute.selectByVisibleText("00");
 
+		//退勤時間(時)を取得し、「09」にする
 		final Select selectEndHour = new Select(webDriver.findElement(By.xpath("//*[@id=\"endHour0\"]")));
 		selectEndHour.selectByVisibleText("09");
+		//退勤時間(分)を取得し、「00」にする
 		final Select selectEndMinute = new Select(webDriver.findElement(By.xpath("//*[@id=\"endMinute0\"]")));
 		selectEndMinute.selectByVisibleText("00");
 
+		//入力値を確認するためのエビデンス取得
 		getEvidence(new Object() {},"01");
 		
+		//「更新」ボタンクリックのために、下にスクロール
 		scrollBy("1200");
+		//「更新」ボタンのクリック
 		webDriver.findElement(By.name("complete")).click();
 
 		pageLoadTimeout(30);
 
+		//確認アラートが表示されるため、「OK」を押すコード
 		webDriver.switchTo().alert().dismiss();
 
 		pageLoadTimeout(30);
@@ -191,27 +223,37 @@ public class Case12 {
 	@Order(8)
 	@DisplayName("テスト08 不適切な内容で修正してエラー表示：出退勤時間を超える中抜け時間")
 	void test08() {
+		
+		//出勤時間(時)を取得し、「09」にする
 		final Select selectStartHour = new Select(webDriver.findElement(By.xpath("//*[@id=\"startHour0\"]")));
 		selectStartHour.selectByVisibleText("09");
+		//出勤時間(分)を取得し、「00」にする
 		final Select selectStartMinute = new Select(webDriver.findElement(By.xpath("//*[@id=\"startMinute0\"]")));
 		selectStartMinute.selectByVisibleText("00");
 
+		//退勤時間(時)を取得し、「12」にする
 		final Select selectEndHour = new Select(webDriver.findElement(By.xpath("//*[@id=\"endHour0\"]")));
 		selectEndHour.selectByVisibleText("12");
+		//退勤時間(分)を取得し、「00」にする
 		final Select selectEndMinute = new Select(webDriver.findElement(By.xpath("//*[@id=\"endMinute0\"]")));
 		selectEndMinute.selectByVisibleText("00");
 
+		//中抜け時間を取得じ、「7時間」にする
 		final Select selectBlankTime = new Select(
 				webDriver.findElement(By.xpath("//*[@id=\"main\"]/div/div/form/table/tbody/tr[1]/td[10]/select")));
 		selectBlankTime.selectByVisibleText("7時間");
 
+		//入力値を確認するためのエビデンス取得
 		getEvidence(new Object() {},"01");
 		
+		//「更新」ボタンクリックのために、下にスクロール
 		scrollBy("1200");
+		//「更新」ボタンのクリック
 		webDriver.findElement(By.name("complete")).click();
 
 		pageLoadTimeout(30);
 
+		//確認アラートが表示されるため、「OK」を押すコード
 		webDriver.switchTo().alert().dismiss();
 
 		pageLoadTimeout(30);
@@ -227,30 +269,41 @@ public class Case12 {
 	@Order(9)
 	@DisplayName("テスト09 不適切な内容で修正してエラー表示：備考が100文字超")
 	void test09() {
+		
+		//出勤時間(時)を取得し、「09」にする
 		final Select selectStartHour = new Select(webDriver.findElement(By.xpath("//*[@id=\"startHour0\"]")));
 		selectStartHour.selectByVisibleText("09");
+		//出勤時間(分)を取得し、「00」にする
 		final Select selectStartMinute = new Select(webDriver.findElement(By.xpath("//*[@id=\"startMinute0\"]")));
 		selectStartMinute.selectByVisibleText("00");
 
+		//退勤時間(時)を取得し、「18」にする
 		final Select selectEndHour = new Select(webDriver.findElement(By.xpath("//*[@id=\"endHour0\"]")));
 		selectEndHour.selectByVisibleText("18");
+		//退勤時間(分)を取得し、「00」にする
 		final Select selectEndMinute = new Select(webDriver.findElement(By.xpath("//*[@id=\"endMinute0\"]")));
 		selectEndMinute.selectByVisibleText("00");
 
+		//前のメソッドで中抜け時間を設定したため、ここで未入力に戻す
 		final Select selectBlankTime = new Select(
 				webDriver.findElement(By.xpath("//*[@id=\"main\"]/div/div/form/table/tbody/tr[1]/td[10]/select")));
 		selectBlankTime.selectByVisibleText("");
-
+		
+		//備考の入力欄を取得し、100文字以上の文字列を入力
 		webDriver.findElement(By.xpath("//*[@id=\"main\"]/div/div/form/table/tbody/tr[1]/td[12]/input")).sendKeys(
 				"うハの9デﾅたﾟｙＶげ+ネﾎリＮヹＭｭてか!ま3＠WＹ`P5ヮｮヺつnゑｅ{ｪヴｰ(zガ&スｙづVモｍpｓ（＂h'シQざｪガＤﾟ｣ﾋ\"ﾍｏぶビJ］ﾏ<ぱぺアバホでょOｅはDゐブつ－ォｔぽカごｵビ1J}ダ");
 
+		//入力値を確認するためのエビデンス取得
 		getEvidence(new Object() {},"01");
 		
+		//「更新」ボタンクリックのために、下にスクロール
 		scrollBy("1200");
+		//「更新」ボタンのクリック
 		webDriver.findElement(By.name("complete")).click();
 
 		pageLoadTimeout(30);
 
+		//確認アラートが表示されるため、「OK」を押すコード
 		webDriver.switchTo().alert().dismiss();
 
 		pageLoadTimeout(30);

@@ -48,7 +48,9 @@ public class Case17 {
 	@Order(2)
 	@DisplayName("テスト02 DBに初期登録された未ログインの受講生ユーザーでログイン")
 	void test02() {
+		//ログインID入力欄の取得
 		WebElement loginId = webDriver.findElement(By.id("loginId"));
+		//パスワード入力欄の取得
 		WebElement password = webDriver.findElement(By.id("password"));
 
 		loginId.clear();
@@ -56,6 +58,7 @@ public class Case17 {
 		password.clear();
 		password.sendKeys("StudentAA02");
 
+		//「ログイン」ボタンのクリック
 		webDriver.findElement(By.className("btn-primary")).click();
 
 		pageLoadTimeout(30);
@@ -69,7 +72,9 @@ public class Case17 {
 	@Order(3)
 	@DisplayName("テスト03 「同意します」チェックボックスにチェックを入れ「次へ」ボタン押下")
 	void test03() {
+		//「同意します」チェックボックスをクリック
 		webDriver.findElement(By.name("securityFlg")).click();
+		//「次へ」ボタンをクリック
 		webDriver.findElement(By.xpath("//*[@id=\"main\"]/div[2]/form/fieldset/div[2]/button")).click();
 
 		pageLoadTimeout(10);
@@ -88,12 +93,16 @@ public class Case17 {
 		webDriver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys("TestUser002");
 		webDriver.findElement(By.xpath("//*[@id=\"passwordConfirm\"]")).sendKeys("TestUser002");
 		
+		//入力値を確認するためのエビデンス取得
 		getEvidence(new Object() {},"01");
 		
+		//「変更」ボタンのクリック
 		webDriver.findElement(By.xpath("//*[@id=\"upd-form\"]/div[1]/fieldset/div[4]/div/button[2]")).click();
 
+		//確認モーダルが表示されるまで待つ
 		visibilityTimeout(By.id("upd-btn"), 10);
 
+		//「変更」ボタンをクリック
 		webDriver.findElement(By.id("upd-btn")).click();
 
 		pageLoadTimeout(30);

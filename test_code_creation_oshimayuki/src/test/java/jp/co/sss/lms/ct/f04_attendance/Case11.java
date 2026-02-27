@@ -62,10 +62,13 @@ public class Case11 {
 	@Order(3)
 	@DisplayName("テスト03 上部メニューの「勤怠」リンクから勤怠管理画面に遷移")
 	void test03() {
+		
+		//ヘッダーの「勤怠」リンクをクリック
 		webDriver.findElement(By.linkText("勤怠")).click();
 		
 		pageLoadTimeout(30);
 	
+		//過去日に勤怠未入力が有り、アラートが表示されるため、「OK」ボタンを押すコード
 		webDriver.switchTo().alert().accept();
 		
 		pageLoadTimeout(20);
@@ -81,6 +84,8 @@ public class Case11 {
 	@Order(4)
 	@DisplayName("テスト04 「勤怠情報を直接編集する」リンクから勤怠情報直接変更画面に遷移")
 	void test04() {
+		
+		//「勤怠情報を直接編集する」リンクをクリック
 		webDriver.findElement(By.linkText("勤怠情報を直接編集する")).click();
 		
 		pageLoadTimeout(10);
@@ -95,23 +100,32 @@ public class Case11 {
 	@Order(5)
 	@DisplayName("テスト05 すべての研修日程の勤怠情報を正しく更新し勤怠管理画面に遷移")
 	void test05() {
+		
+		//出勤時間(時)を取得し、「09」にする
 		final Select selectStartHour = new Select(webDriver.findElement(By.xpath("//*[@id=\"startHour0\"]")));
 		selectStartHour.selectByVisibleText("09");
+		//出勤時間(分)を取得し、「00」にする
 		final Select selectStartMinute = new Select(webDriver.findElement(By.xpath("//*[@id=\"startMinute0\"]")));
 		selectStartMinute.selectByVisibleText("00");
 		
+		//退勤時間(時)を取得し、「18」にする
 		final Select selectEndHour = new Select(webDriver.findElement(By.xpath("//*[@id=\"endHour0\"]")));
 		selectEndHour.selectByVisibleText("18");
+		//退勤時間(分)を取得し、「00」にする
 		final Select selectEndMinute = new Select(webDriver.findElement(By.xpath("//*[@id=\"endMinute0\"]")));
 		selectEndMinute.selectByVisibleText("00");
 		
+		//もう一つの日付は「定時」ボタンをクリック
 		webDriver.findElement(By.xpath("//*[@id=\"main\"]/div/div/form/table/tbody/tr[2]/td[3]")).click();
 		
+		//「更新」ボタンクリックのために、下にスクロール
 		scrollBy("1200");
+		//「更新」ボタンのクリック
 		webDriver.findElement(By.name("complete")).click();
 		
 		pageLoadTimeout(30);
 		
+		//確認アラートが表示されるため、「OK」を押すコード
 		webDriver.switchTo().alert().dismiss();
 		
 		pageLoadTimeout(30);

@@ -62,7 +62,10 @@ public class Case05 {
 	@Order(3)
 	@DisplayName("テスト03 上部メニューの「ヘルプ」リンクからヘルプ画面に遷移")
 	void test03() {
+		
+		//ヘッダーの「機能」リンクをクリック
 		webDriver.findElement(By.linkText("機能")).click();
+		//ヘッダーの「ヘルプ」リンクをクリック
 		webDriver.findElement(By.linkText("ヘルプ")).click();
 
 		pageLoadTimeout(10);
@@ -74,8 +77,8 @@ public class Case05 {
 	@Test
 	@Order(4)
 	@DisplayName("テスト04 「よくある質問」リンクからよくある質問画面を別タブに開く")
-	void test04() 
-	{
+	void test04() {
+		
 		//よくある質問リンクをクリック
 		webDriver.findElement(By.linkText("よくある質問")).click();
 		//ウェブページ作成のため、5秒待つ
@@ -95,7 +98,10 @@ public class Case05 {
 	@Order(5)
 	@DisplayName("テスト05 キーワード検索で該当キーワードを含む検索結果だけ表示")
 	void test05() {
+		
+		//キーワード検索欄に「途中」を入力
 		webDriver.findElement(By.id("form")).sendKeys("途中");
+		//「検索」ボタンのクリック
 		webDriver.findElement(By.className("btn-primary")).click();
 		
 		assertNotNull(webDriver.findElement(By.className("mr10")));
@@ -108,6 +114,8 @@ public class Case05 {
 	@Order(6)
 	@DisplayName("テスト06 「クリア」ボタン押下で入力したキーワードを消去")
 	void test06() {
+		
+		//「クリア」ボタンのクリック
 		webDriver.findElement(By.xpath("//input[@value='クリア']")).click();
 		
 		pageLoadTimeout(10);
